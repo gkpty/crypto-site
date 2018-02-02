@@ -1,0 +1,40 @@
+{% if latest_post_list %}
+    <ul>
+    {% for post in latest_post_list %}
+    	<h2>{{ post.title }}</h2>
+    	<p>{{ post.body }}</p>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No posts are available.</p>
+{% endif %}
+
+<h1>{{Contact}}</h1>
+
+{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+
+<h1>BTC</h1><h1> {{lbtc}} </h1>
+<h1>ETH</h1><h1> {{leth}} </h1>
+<h1>XLM</h1><h1> {{lxlm}} </h1>
+
+
+<h1>{{ Registrate }}</h1>
+
+{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+
+{% block register %}
+    <h1>Registrate</h1>
+    <form method="POST" class="register-form">{% csrf_token %}
+        {{ registerform.as_p }}
+        <button type="submit" class="save btn btn-default" name="registra">Save</button>
+    </form>
+{% endblock %}
+
+
+{% block contact %}
+    <h1>Contactanos</h1>
+    <form method="POST" class="contact_us-form">{% csrf_token %}
+        {{ contactform.as_p }}
+        <button type="submit" class="save btn btn-default" name="contacta">Save</button>
+    </form>
+{% endblock %}
